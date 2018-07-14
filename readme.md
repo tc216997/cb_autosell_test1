@@ -1,9 +1,12 @@
 #CB autosell to USD bot
 
+
 ## Instruction
 
+## Before step 1, you should have NodeJS, Heroku ToolBelt, and Git installed.
+
 ### Step 1. Create an app on heroku (remember the name, only dashes, numbers and lowercase letters are allowed)
-###         Create a github account && create a repository for the app
+### Also create a repository for the app.
 
 ### Step 2. Login into heroku with your username and pw via command line
 
@@ -22,7 +25,7 @@
 ### Step 7. Push to remote repo on github
 `git push origin master`
 
-###Step 8. Attaching the repo to heroku's git
+### Step 8. Attaching the repo to heroku's git
 `heroku git:remote -a the-name-of-the-app-you-set-on-heroku`
 
 ### Step 9. Push to heroku branch
@@ -40,12 +43,10 @@
 `heroku config:set API_SECRET=*api key you have set up*`
 
 ### We can check the status of the bot and whether the deployment was a success by entering 
-`heroku ps` 
-### in the console. (it should say worker.x: up timestamp)
+`heroku ps` in the console. (it should say worker.x: up timestamp)
 
 ### We can also check the logs by entering 
-`heroku logs`
-### in the console.
+`heroku logs` in the console.
 
 ### We can stop the bot by entering
 `heroku ps:scale worker=0`

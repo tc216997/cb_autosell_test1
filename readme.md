@@ -2,8 +2,8 @@
 
 ## Before step 1, you should have [NodeJS](https://nodejs.org/en/), [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli), and [Git](https://git-scm.com/downloads) installed.
 
-### Step 1. Create an app on heroku (remember the name, only dashes, numbers and lowercase letters are allowed)
-### Also create a repository for the app.
+### Step 1. log into heroku dashboard and create an app page (remember the name, only dashes, numbers and lowercase letters are allowed)
+### Also create a github repository for this app.
 
 ### Step 2. Login into heroku with your username and pw via command line
 

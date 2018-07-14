@@ -39,12 +39,17 @@
 ###Step 13. Store the api_secret into environment variable on Heroku Dyno 
 `heroku config:set API_SECRET=*api key you have set up*`
 
-###Step 14. We can check the status of the bot and whether the deployment was a success by entering 
+###We can check the status of the bot and whether the deployment was a success by entering 
 `heroku ps` 
-###         in the console. (it should say worker.x: up timestamp)
+###in the console. (it should say worker.x: up timestamp)
 
-###Step 15. We can also check the logs entering 
+###We can also check the logs by entering 
 `heroku logs`
-###         in the console.
+###in the console.
+
+###We can stop the bot by entering
+`heroku ps:scale worker=0`
+###in the console.
 
 ### Remember, each time we change the source file, we would have to push the changes to the heroku branch and restart the bot in order for the changes to take effect.
+

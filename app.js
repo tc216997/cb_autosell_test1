@@ -16,7 +16,6 @@ let queue = [];
 
 // run the main function
 main();
-
 // this create an time loop of 10 seconds that keeps firing the main function
 // It also stores the timerId in the event the loop has to be stopped in case of errors.
 let timerId = setInterval(() => {
@@ -38,7 +37,8 @@ function main() {
     console.log('Uh-oh. Something went wrong!');
     console.log(err);
     // this stops the time loop and allows us to troubleshoot without wiping out the heroku logs
-    clearInterval(timerId);  
+    clearInterval(timerId);
+    timerId = null;  
   });
 }
 
@@ -66,13 +66,10 @@ function sweepAccounts() {
     accounts.map(account => {
       // sets a bool where it only returns true for btc/eth/ltc/bch wallet
       let isCrypto = account.currency === 'BTC' || account.currency === 'ETH' || account.currency === 'LTC' || account.currency === 'BCH';
-      
       // if the account is greater than or equal to minimum order size for the specific crypto and is a crypto
       if (checkMinimumSize(account.balance, account.currency) && isCrypto) {
-        
         // prints on console the account balance and the account currency symbol
         console.log(`We have ${account.balance} ${account.currency}`);
-        
         // push the order object to the queue array
         queue.push(account);
       }
@@ -87,6 +84,7 @@ function sweepAccounts() {
     console.log(err);
     // this stops the time loop and allows us to troubleshoot without wiping out the heroku logs
     clearInterval(timerId);  
+    timerId = null;  
   }); 
 }
 
@@ -103,7 +101,6 @@ function convertToFiat() {
       // this fetches the current order book in regards to the current order object trade pair
       .getProductOrderBook(tradePair)
       .then(data => {
-
         // only allow orders to execute if there are bids
         // can't sell if there are 0 bids
         if (data.bids.length !== 0) {
@@ -114,14 +111,12 @@ function convertToFiat() {
           let bidPrice = data.bids[0][0];
           // here we assigned what the size of our sell
           let ourSize = accountObj.available;
-
           // if the our sell is less than or equal to the size of the top order bid
           if (parseFloat(ourSize) <= parseFloat(bookSize)) {
             // we prep the sell object with our sell size
             let sellParam = prepSell(bidPrice, ourSize, tradePair);
             // we fire off the sell order
             fireSellOrder(sellParam, tradePair, ourSize);
-          
           // if the book is less than what we want to sell, then we have to match the top order book size
           } else {
             // we prep the sell object with the top of the order book bid size
@@ -141,9 +136,12 @@ function convertToFiat() {
       })
       // error catching
       .catch(err => {
+        // error catching in case something went wrong. prints the error message and error object in the console.
         console.log('Uh-oh. Something went wrong!');
         console.log(err);
-        clearInterval(timerId);
+        // this stops the time loop and allows us to troubleshoot without wiping out the heroku logs
+        clearInterval(timerId); 
+        timerId = null;   
       })
   });
 }
@@ -169,9 +167,12 @@ function fireSellOrder(param, pair, size) {
   })
   // error catching
   .catch(err => {
+    // error catching in case something went wrong. prints the error message and error object in the console.
     console.log('Uh-oh. Something went wrong!');
     console.log(err);
-    clearInterval(timerId);
+    // this stops the time loop and allows us to troubleshoot without wiping out the heroku logs
+    clearInterval(timerId);  
+    timerId = null;  
   });  
 }
 

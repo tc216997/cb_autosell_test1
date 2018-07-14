@@ -1,7 +1,4 @@
-#CB autosell to USD bot
-
-
-## Instruction
+## Instructions
 
 ## Before step 1, you should have NodeJS, Heroku ToolBelt, and Git installed.
 

@@ -32,13 +32,19 @@
 
 ###Step 11. Store the passphrase into environment variable on Heroku Dyno 
 `heroku config:set PASSPHRASE=*secret passphrase you have set up*`
+
 ###Step 12. Store the api_key into environment variable on Heroku Dyno 
 `heroku config:set API_KEY=*api key you have set up*`
+
 ###Step 13. Store the api_secret into environment variable on Heroku Dyno 
 `heroku config:set API_SECRET=*api key you have set up*`
+
 ###Step 14. We can check the status of the bot and whether the deployment was a success by entering 
 `heroku ps` 
 ###         in the console. (it should say worker.x: up timestamp)
+
 ###Step 15. We can also check the logs entering 
 `heroku logs`
-###         in the come.
+###         in the console.
+
+### Remember, each time we change the source file, we would have to push the changes to the heroku branch and restart the bot in order for the changes to take effect.

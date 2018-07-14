@@ -7,7 +7,6 @@ const secret = process.env.API_SECRET;
 const passphrase = process.env.PASSPHRASE;
 const publicClient = new Gdax.PublicClient(sandboxUrl);
 const authedClient = new Gdax.AuthenticatedClient(key, secret, passphrase, sandboxUrl);
-let port = process.env.PORT || 5000;
 let queue = [];
 
 

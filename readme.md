@@ -28,18 +28,14 @@
 ### Step 9. Push to heroku branch
 `git push heroku master`
 
-### Step 10. Go to the heroku app dashboard. Go to configure dyno, turn off the web and turn on worker setting. Enter this
-`heroku restart` 
-### in the console to restart the dyno in order for the settings change to take effect.
+### Step 10. Store the passphrase into environment variable on Heroku Dyno 
+`heroku config:set PASSPHRASE=*secret passphrase you received from coinbase*`
 
-### Step 11. Store the passphrase into environment variable on Heroku Dyno 
-`heroku config:set PASSPHRASE=*secret passphrase you have set up*`
+### Step 11. Store the api_secret into environment variable on Heroku Dyno 
+`heroku config:set API_SECRET=*api secret you received from coinbase*`
 
 ### Step 12. Store the api_key into environment variable on Heroku Dyno 
-`heroku config:set API_KEY=*api key you have set up*`
-
-### Step 13. Store the api_secret into environment variable on Heroku Dyno 
-`heroku config:set API_SECRET=*api key you have set up*`
+`heroku config:set API_KEY=*api key you have received from coinbase*`
 
 #### We can check the status of the bot and whether the deployment was a success by entering 
 `heroku ps` 

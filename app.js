@@ -1,4 +1,3 @@
-require('dotenv').config()
 // we start by importing the coinbase.pro module for nodeJS. No need to write our own since the library was provided for.
 const Gdax = require('gdax');
 

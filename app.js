@@ -20,7 +20,7 @@ main();
 // It also stores the timerId in the event the loop has to be stopped in case of errors.
 let timerId = setInterval(() => {
   main()
-}, 10000);
+}, 60000);
 
 // function name is name
 function main() {
@@ -34,7 +34,7 @@ function main() {
   })
   .catch(err => {
     // error catching in case something went wrong. prints the error message and error object in the console.
-    console.log('Uh-oh. Something went wrong!');
+    console.log('Uh-oh. Something went wrong for function main()');
     console.log(err);
     // this stops the time loop and allows us to troubleshoot without wiping out the heroku logs
     clearInterval(timerId);
@@ -50,6 +50,7 @@ function checkMinimumSize(size, pair) {
     'ETH': '.01',
     'LTC': '.1',
     'BCH': '.01',
+    'ETC': '.01'
   };
   return (parseFloat(size) >= parseFloat(minimum[pair]));
 }
@@ -80,7 +81,7 @@ function sweepAccounts() {
   // error catching
   .catch(err => {
     // error catching in case something went wrong. prints the error message and error object in the console.
-    console.log('Uh-oh. Something went wrong!');
+    console.log(`Uh-oh. Something went wrong for function sweepAccounts()`);
     console.log(err);
     // this stops the time loop and allows us to troubleshoot without wiping out the heroku logs
     clearInterval(timerId);  
@@ -137,7 +138,7 @@ function convertToFiat() {
       // error catching
       .catch(err => {
         // error catching in case something went wrong. prints the error message and error object in the console.
-        console.log('Uh-oh. Something went wrong!');
+        console.log(`Uh-oh. Something went wrong for function convertToFiat()!`);
         console.log(err);
         // this stops the time loop and allows us to troubleshoot without wiping out the heroku logs
         clearInterval(timerId); 
@@ -168,12 +169,10 @@ function fireSellOrder(param, pair, size) {
   // error catching
   .catch(err => {
     // error catching in case something went wrong. prints the error message and error object in the console.
-    console.log('Uh-oh. Something went wrong!');
+    console.log(`Uh-oh. Something went wrong for function fireSellOrder() for ${pair}!`);
     console.log(err);
     // this stops the time loop and allows us to troubleshoot without wiping out the heroku logs
     clearInterval(timerId);  
     timerId = null;  
   });  
 }
-
-

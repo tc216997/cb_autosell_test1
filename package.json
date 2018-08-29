@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "gdax": "^0.8.0",
-    "nsp": "^3.2.1"
+    "dotenv": "^6.0.0",
+    "gdax": "^0.8.0"
   }
 }

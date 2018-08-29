@@ -1,3 +1,4 @@
+require('dotenv').config()
 // we start by importing the coinbase.pro module for nodeJS. No need to write our own since the library was provided for.
 const Gdax = require('gdax');
 
@@ -20,7 +21,7 @@ main();
 // It also stores the timerId in the event the loop has to be stopped in case of errors.
 let timerId = setInterval(() => {
   main()
-}, 60000);
+}, 10000);
 
 // function name is name
 function main() {
@@ -50,7 +51,6 @@ function checkMinimumSize(size, pair) {
     'ETH': '.01',
     'LTC': '.1',
     'BCH': '.01',
-    'ETC': '.01'
   };
   return (parseFloat(size) >= parseFloat(minimum[pair]));
 }

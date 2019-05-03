@@ -1,5 +1,5 @@
 // we start by importing the coinbase.pro module for nodeJS. No need to write our own since the library was provided for.
-const Gdax = require('gdax');
+const Gdax = require('coinbase-pro');
 
 // this is the url for the api
 const url = 'https://api-public.sandbox.pro.coinbase.com';

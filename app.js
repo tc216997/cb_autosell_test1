@@ -1,4 +1,5 @@
 // we start by importing the coinbase.pro module for nodeJS. No need to write our own since the library was provided for.
+//require('dotenv').config();
 const Gdax = require('coinbase-pro');
 
 // this is the url for the api
@@ -47,7 +48,7 @@ function main() {
 function checkMinimumSize(size, pair) {
   let minimum = {
     'BTC': '.001',
-    'ETH': '.01',
+    //'ETH': '.01',
     'LTC': '.1',
     'BCH': '.01',
   };

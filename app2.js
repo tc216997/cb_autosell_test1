@@ -1,4 +1,3 @@
-// we start by importing the coinbase.pro module for nodeJS. No need to write our own since the library was provided for.
 require('dotenv').config();
 const Gdax = require('coinbase-pro');
 
@@ -32,11 +31,10 @@ function main() {
   .then((data) => {
     // checks the accounts
     sweepAccounts();
-    console.log('hey im working!')
   })
   .catch(err => {
     // error catching in case something went wrong. prints the error message and error object in the console.
-    console.log('Uh-oh. Something went wrong for function main()');
+    console.log('Uh-oh. Something went wrong!');
     console.log(err);
     // this stops the time loop and allows us to troubleshoot without wiping out the heroku logs
     clearInterval(timerId);
@@ -48,7 +46,7 @@ function main() {
 // returns a boolean
 function checkMinimumSize(size, pair) {
   let minimum = {
-    'BTC': '.0011',
+    'BTC': '.001',
   };
   return (parseFloat(size) >= parseFloat(minimum[pair]));
 }
@@ -64,7 +62,7 @@ function sweepAccounts() {
     // loop through each account
     accounts.map(account => {
       // sets a bool where it only returns true for btc/eth/ltc/bch wallet
-      let isCrypto = account.currency === 'BTC' || account.currency === 'ETH' || account.currency === 'LTC' || account.currency === 'BCH';
+      let isCrypto = account.currency === 'BTC'
       // if the account is greater than or equal to minimum order size for the specific crypto and is a crypto
       if (checkMinimumSize(account.balance, account.currency) && isCrypto) {
         // prints on console the account balance and the account currency symbol
@@ -79,7 +77,7 @@ function sweepAccounts() {
   // error catching
   .catch(err => {
     // error catching in case something went wrong. prints the error message and error object in the console.
-    console.log(`Uh-oh. Something went wrong for function sweepAccounts()`);
+    console.log('Uh-oh. Something went wrong!');
     console.log(err);
     // this stops the time loop and allows us to troubleshoot without wiping out the heroku logs
     clearInterval(timerId);  
@@ -136,7 +134,7 @@ function convertToFiat() {
       // error catching
       .catch(err => {
         // error catching in case something went wrong. prints the error message and error object in the console.
-        console.log(`Uh-oh. Something went wrong for function convertToFiat()!`);
+        console.log('Uh-oh. Something went wrong!');
         console.log(err);
         // this stops the time loop and allows us to troubleshoot without wiping out the heroku logs
         clearInterval(timerId); 
@@ -167,10 +165,11 @@ function fireSellOrder(param, pair, size) {
   // error catching
   .catch(err => {
     // error catching in case something went wrong. prints the error message and error object in the console.
-    console.log(`Uh-oh. Something went wrong for function fireSellOrder() for ${pair}!`);
+    console.log('Uh-oh. Something went wrong!');
     console.log(err);
     // this stops the time loop and allows us to troubleshoot without wiping out the heroku logs
     clearInterval(timerId);  
     timerId = null;  
   });  
 }
+
